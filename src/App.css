@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-	background-color: rgba(0, 0, 0, 0.925);
+	background-color: #161b27;;
 }
 .hero {
 	background-image: url("./assets/hero-bg.jpg");
@@ -14,4 +14,7 @@ body{
 	height: 100vh;
 }
 
+.header.active{
+	background-color: red !important;
+}
 
