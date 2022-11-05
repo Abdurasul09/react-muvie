@@ -1,26 +1,30 @@
 import React, {useEffect, useState} from 'react'
+import Layout from '../../components/Layout'
 import axios from 'axios';
-import Movies from '../components/home/upcomingMovies/movies/Movies';
-import { apiKay } from '../api/api';
+import LatestMovies from './LatestMovies';
+import { apiKay } from '../../api/api';
 
-const Popular = () => {
+
+const Latest = () => {
 
 	const [getData, setGetData] = useState([]);
-  
+
+	console.log(getData);
 	useEffect(() => {
-    axios(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKay}&language=en-US&page=1`)
+    axios(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKay}&language=en-US&page=1`)
 		.then(res => setGetData(res.data))
 	},[])
-
+	
 
 	return (
-		<div className='popular h-[100vh] py-[3rem]'>
+		<Layout>
+			<div className='latest h-[100vh] py-[3rem]'>
       <section>
 				<div className='container mx-auto px-9'>
 					<div className='flex items-center justify-between py-20' >
 						<div>
-								<span className='text-[#e2d703] text-l font-bold '>ONLINE STREAMING</span>
-						<h1 className='text-white text-5xl font-[700] pt-4'>Popular Movies</h1>
+								<span className='text-[#bde203] text-l font-bold '>ONLINE STREAMING</span>
+						<h1 className='text-white text-5xl font-[700] pt-4'>Latest Movies</h1>
 						</div>
 					
 						<div>
@@ -30,11 +34,12 @@ const Popular = () => {
 						</div>
 
 					</div>
-					<Movies data={getData}/>
+					<LatestMovies data={getData}/>
 				</div>
 			</section>
     </div>
+		</Layout>
 	)
 }
 
-export default Popular;
+export default Latest

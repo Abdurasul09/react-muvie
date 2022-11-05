@@ -1,21 +1,20 @@
-import React from "react";
+import React from 'react'
+import { NavLink } from 'react-router-dom';
+import Slider from 'react-slick';
 import { MdOutlineWatchLater } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
-import Slider from "react-slick";
 
-const Movies = ({ data }) => {
-  const settings = {
+const TopRatedMovies = ({data}) => {
+	const settings = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
   };
-  
-  return (
-    <Slider {...settings}>
-      {data.results?.slice(0, 8).map((el, idx) => {
+	return (
+		<Slider {...settings}>
+      {data.slice(0, 8).map((el, idx) => {
         return (
           <div className="p-4" key={idx}>
             <NavLink to={`/movie/${el.id}`}>
@@ -48,7 +47,7 @@ const Movies = ({ data }) => {
         );
       })}
     </Slider>
-  );
-};
+	)
+}
 
-export default Movies;
+export default TopRatedMovies

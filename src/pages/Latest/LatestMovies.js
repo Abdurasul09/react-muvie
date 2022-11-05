@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 
-const Movies = ({ data }) => {
+const LatestMovies = ({ data }) => {
   const settings = {
     dots: false,
     infinite: true,
@@ -12,10 +12,12 @@ const Movies = ({ data }) => {
     slidesToShow: 4,
     slidesToScroll: 1,
   };
-  
+
+  console.log(data);
+
   return (
     <Slider {...settings}>
-      {data.results?.slice(0, 8).map((el, idx) => {
+      {data.results?.map((el, idx) => {
         return (
           <div className="p-4" key={idx}>
             <NavLink to={`/movie/${el.id}`}>
@@ -51,4 +53,4 @@ const Movies = ({ data }) => {
   );
 };
 
-export default Movies;
+export default LatestMovies;

@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios';
-import Movies from '../components/home/upcomingMovies/movies/Movies';
-import { apiKay } from '../api/api';
+import axios, { Axios } from 'axios';
+import React,{useEffect, useState} from 'react'
+import { apiKay } from '../../api/api';
+import NowPlayingMovies from './NowPlayingMovies';
 
-const Popular = () => {
+
+
+const NowPlaying = () => {
 
 	const [getData, setGetData] = useState([]);
-  
+  console.log(getData);
 	useEffect(() => {
-    axios(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKay}&language=en-US&page=1`)
-		.then(res => setGetData(res.data))
+    axios(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKay}&language=en-US&page=1`)
+		.then(({data}) => setGetData(data.results))
 	},[])
 
 
@@ -20,7 +22,7 @@ const Popular = () => {
 					<div className='flex items-center justify-between py-20' >
 						<div>
 								<span className='text-[#e2d703] text-l font-bold '>ONLINE STREAMING</span>
-						<h1 className='text-white text-5xl font-[700] pt-4'>Popular Movies</h1>
+						<h1 className='text-white text-5xl font-[700] pt-4'>Now Playing Movies</h1>
 						</div>
 					
 						<div>
@@ -30,11 +32,11 @@ const Popular = () => {
 						</div>
 
 					</div>
-					<Movies data={getData}/>
+					<NowPlayingMovies data={getData}/>
 				</div>
 			</section>
     </div>
 	)
 }
 
-export default Popular;
+export default NowPlaying

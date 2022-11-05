@@ -1,1 +1,1 @@
-export const imgIpi = "https://image.tmdb.org/t/p/w500"
+export const apiKay = "72315348c29a41a225bae93956036048";
